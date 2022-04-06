@@ -9,13 +9,13 @@ public class GenericExample {
         book1.setGenericVariable("generic Variable Example");
         book2.setGenericVariable(70000L);
 
-        //generic Method가 아닌 일반 메서드이기 때문에 매개변수 타입인 T 는 클래스에 붙은 T가 된다.
+        //getGenericVariable메서드는 generic Method가 아닌 일반 메서드이기 때문에 매개변수 타입인 T 는 클래스에 붙은 T가 된다.
         System.out.println(book1.getGenericVariable());
         System.out.println(book2.getGenericVariable());
 
         //generic Method 사용
-        Book.genericMethod(new BookChild("child name1", 1000, "nick name1"));
-        Book.genericMethod(new BookChild("child name2", 2000, "nick name2"));
+        book1.<BookChild>genericMethod(new BookChild("child name1", 1000, "nick name1"));
+        book2.<Book>genericMethod(new BookChild("child name2", 2000, "nick name2"));
 
     }
 }
@@ -32,7 +32,7 @@ class Book<T>{
    }
 
    // 제네릭 메서드의 T와 클래스 위에 붙어있는 T는 전혀 상관이 없음
-   public static <T extends Book> void genericMethod(T genericMethodArg){
+   public <T extends Book> void genericMethod(T genericMethodArg){
        System.out.println(genericMethodArg.getName());
    }
 
