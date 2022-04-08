@@ -38,6 +38,7 @@ class Person{
     private String name;
     private List<String> friends = new ArrayList<>();
 
+    public Person(){}
     public Person(String name, List<String> friends) {
         this.name = name;
         this.friends = friends;
@@ -49,6 +50,14 @@ class Person{
 
     public String getName() {
         return name;
+    }
+
+    public void publicMethodWithParam(String param){
+        System.out.println("param : " + param);
+    }
+
+    private void privateMethod(String param){
+        System.out.println("param : " + param);
     }
 }
 
